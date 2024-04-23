@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minima Player</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/video.js@7.20.0/dist/video-js.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/player.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img src="/logo/logo.png" alt="" id="logo" />
+      </nav>
+      <h3></h3>
+    </header>
+    <div class="container">
+      <div class="player">
+        <iframe
+          src="https://www.youtube.com/embed/<%= videoId %>"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        <div class="movie-details">
+          <table>
+            <tr>
+              <td>
+                <img
+                  src="<%= movie.poster %>"
+                  alt="Movie Photo"
+                  class="movie-photo"
+                />
+              </td>
+              <td>
+                <table class="space">
+                  <tr>
+                    <td>
+                      <h2><%= movie.title + ' ' + movie.year%></h2>
+                    </td>
+                  </tr>
+                  <tr style="visibility: hidden">
+                    <td>
+                      <p>
+                        <strong>Country: </strong
+                        ><span class="color"><%= movie.country %></span>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr style="visibility: hidden">
+                    <td>
+                      <p>
+                        <strong>Country: </strong
+                        ><span class="color"><%= movie.country %></span>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr style="visibility: hidden">
+                    <td>
+                      <p>
+                        <strong>Country: </strong
+                        ><span class="color"><%= movie.country %></span>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr style="visibility: hidden">
+                    <td>
+                      <p>
+                        <strong>Country: </strong
+                        ><span class="color"><%= movie.country %></span>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr style="visibility: hidden">
+                    <td>
+                      <p>
+                        <strong>Country: </strong
+                        ><span class="color"><%= movie.country %></span>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>
+                        <strong>Genre: </strong>
+                        <span class="color"><%=movie.genre %></span>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>
+                        <strong>Director: </strong
+                        ><span class="color"><%= movie.director %></span>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>
+                        <strong>Country: </strong
+                        ><span class="color"><%= movie.country %></span>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

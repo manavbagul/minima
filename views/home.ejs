@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minima - MicroCinema</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="/style/home.css" />
+
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/carousel.css" />
+    <script defer src="/scripts/carousel.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img src="/logo/logo.png" alt="" />
+        <span class="search-field">
+          <input type="text" name="search" id="search" placeholder="Search.." />
+          <label for="search">
+            <i class="search-icon fa-solid fa-magnifying-glass"></i>
+          </label>
+        </span>
+      </nav>
+    </header>
+    <div id="container">
+      <main>
+        <div id="display-board">
+          <div class="carousel-container">
+            <div class="carousel-wrapper">
+              <div class="carousel-slide">
+                <img src="/carousel/carousel1.jpg" alt="Image 1" />
+              </div>
+              <div class="carousel-slide">
+                <img src="/carousel/carousel2.jpg" alt="Image 2" />
+              </div>
+              <div class="carousel-slide">
+                <img src="/carousel/carousel3.jpg" alt="Image 3" />
+              </div>
+              <div class="carousel-slide">
+                <img src="/carousel/carousel4.jpg" alt="Image 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="divider">
+          <p>🎥 We are the leading movie streaming site 🍿</p>
+        </div>
+
+        <div id="movie-list">
+          <center>
+            <% newMovies.forEach(function(movie){ %>
+            <div
+              class="movie"
+              style="background-image: url('<%= movie.poster%>')"
+            >
+              <i class="mask"
+                ><p><span><%= movie.title %></span> (<%= movie.year %>)</p></i
+              >
+            </div>
+            <% }); %>
+          </center>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const search = document.getElementById("search");
+
+      search.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          window.location.href = `/search/${search.value}`;
+        }
+      });
+      const clickableElements = document.getElementsByClassName("movie");
+
+      for (let i = 0; i < clickableElements.length; i++) {
+        clickableElements[i].addEventListener("click", function () {
+          let moviename = this.children[0].children[0].children[0].textContent;
+
+          console.log(moviename);
+          fetch(`/playerrequest/${moviename}`)
+            .then((response) => {
+              return response.text();
+            })
+            .then((data) => {
+              console.log("Response from server:", data);
+              window.location.href = `/${moviename}/${data}`;
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

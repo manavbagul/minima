@@ -7,7 +7,7 @@ const app = express();
 const { registerUser, signInUser } = require("./DB/login.js");
 const { fetchTrailer } = require("./DB/yt.js");
 
-const PORT = process.PORT || 2223;
+const PORT = process.env.PORT || 2223;
 
 let newMovies = [];
 let searchedMovies = [];
